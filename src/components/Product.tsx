@@ -24,7 +24,7 @@ export const Product = () => {
             />
             <span className="text-base">{product.title}</span>
             <br />
-            <span className="text-xs">{product.description}</span>
+            <span className="text-xs text-gray-500">{product.description}</span>
             <br />
             <div className="flex place-content-start pt-5 text-lg items-center">
                 <span className="text-slate-950 line-through pr-3">
