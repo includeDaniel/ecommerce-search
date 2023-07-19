@@ -16,24 +16,30 @@ const product = {
 };
 export const Product = () => {
     return (
-        <div className="w-40 h-80">
+        <div className="w-72 h-min bg-white p-5">
             <img
-                className="h-28 w-40"
+                className="h-44 w-56 border-black"
                 src={product.images[0]}
                 alt="product image"
             />
-            <span className="text-sm">{product.title}</span>
+            <span className="text-base">{product.title}</span>
             <br />
             <span className="text-xs">{product.description}</span>
             <br />
-            <div className="flex space-x-8">
-                <span className="text-slate-950 line-through">
+            <div className="flex place-content-start pt-5 text-lg items-center">
+                <span className="text-slate-950 line-through pr-3">
                     {product.price}R$
                 </span>
 
                 <span className="text-red-700">
-                    {product.price -
-                        product.price * (product.discountPercentage / 100)}
+                    {(
+                        product.price -
+                        product.price * (product.discountPercentage / 100)
+                    ).toFixed(2)}
+                    R$
+                </span>
+                <span className="pl-10 text-xs text-gray-700">
+                    {product.stock} in stock
                 </span>
             </div>
         </div>
