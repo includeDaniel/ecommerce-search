@@ -22,30 +22,24 @@ export const Product = () => {
                 src={product.images[0]}
                 alt="product image"
             />
-            <div>
-                <span className="text-base">{product.title}</span>
-            </div>
-            <div>
-                <span className="text-xs text-gray-500">
-                    {product.description}
+            <span className="text-base">{product.title}</span>
+            <hr />
+            <span className="text-xs text-gray-500">{product.description}</span>
+            <div className="flex place-content-start pt-5 text-lg items-center">
+                <span className="text-slate-950 line-through pr-3">
+                    {product.price}R$
                 </span>
-                <br />
-                <div className="flex place-content-start pt-5 text-lg items-center">
-                    <span className="text-slate-950 line-through pr-3">
-                        {product.price}R$
-                    </span>
 
-                    <span className="text-red-700">
-                        {(
-                            product.price -
-                            product.price * (product.discountPercentage / 100)
-                        ).toFixed(2)}
-                        R$
-                    </span>
-                    <span className="pl-10 text-xs text-gray-700">
-                        {product.stock} in stock
-                    </span>
-                </div>
+                <span className="text-red-700">
+                    {(
+                        product.price -
+                        product.price * (product.discountPercentage / 100)
+                    ).toFixed(2)}
+                    R$
+                </span>
+                <span className="pl-10 text-xs text-gray-700">
+                    {product.stock} in stock
+                </span>
             </div>
         </div>
     );
