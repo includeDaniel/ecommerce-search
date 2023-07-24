@@ -1,46 +1,37 @@
 import { useEffect, useState } from "react";
-import { Input } from "./Products/Input";
-import { Product } from "./Products/Product";
-
-useEffect(() => {
-    fetch("https://dummyjson.com/products")
-        .then((res) => res.json())
-        .then(console.log);
-}, []);
-
-const product = {
-    id: 29,
-    title: "Handcraft Chinese style",
-    description:
-        "Handcraft Chinese style art luxury palace hotel villa mansion home decor ceramic vase with brass fruit plate",
-    price: 60,
-    discountPercentage: 15.34,
-    stock: 7, //in stock (7) items
-    images: [
-        "https://i.dummyjson.com/data/products/29/1.jpg",
-        "https://i.dummyjson.com/data/products/29/2.jpg",
-        "https://i.dummyjson.com/data/products/29/3.webp",
-        "https://i.dummyjson.com/data/products/29/4.webp",
-        "https://i.dummyjson.com/data/products/29/thumbnail.webp",
-    ],
-};
+import { Search } from "./Eccomerce/Search";
+import { Product } from "./Eccomerce/Product";
+import Eccomerce from "./Eccomerce/Eccomerce";
 
 export const ProductsContainer = () => {
-    const [products, setProducts] = useState([]);
+    const [eccomerce, setEccomerce] = useState([]);
+
+    useEffect(() => {
+        fetch("https://dummyjson.com/products")
+            .then((res) => res.json())
+            .then(setEccomerce);
+    }, []);
+
+    const productsList = eccomerce.products?.map((v: any) => {
+        return (
+            <Product
+                key={v.id}
+                id={v.id}
+                title={v.title}
+                description={v.description}
+                price={v.price}
+                discountPercentage={v.discountPercentage}
+                image={v.images[0]}
+                stock={v.stock}
+            ></Product>
+        );
+    });
     return (
         <>
-            <Input />
-            <br />
-            <Product
-                key={product.id}
-                id={product.id}
-                title={product.title}
-                description={product.description}
-                price={product.price}
-                discountPercentage={product.discountPercentage}
-                image={product.images[0]}
-                stock={product.stock}
-            ></Product>
+            <Eccomerce>
+                <Search></Search>
+            </Eccomerce>
+            <div>{productsList}</div>
         </>
     );
 };
