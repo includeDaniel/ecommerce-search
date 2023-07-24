@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import { Search } from "./Eccomerce/Search";
-import { Product } from "./Eccomerce/Product";
-import Eccomerce from "./Eccomerce/Eccomerce";
+import Eccomerce from "./Eccomerce-Search";
 
-export const ProductsContainer = () => {
-    const [eccomerce, setEccomerce] = useState([]);
+export const EccomerceContainer = () => {
+    const [eccomerce, setEccomerce]: any = useState([]);
 
     useEffect(() => {
         fetch("https://dummyjson.com/products")
@@ -14,7 +12,7 @@ export const ProductsContainer = () => {
 
     const productsList = eccomerce.products?.map((v: any) => {
         return (
-            <Product
+            <Eccomerce.Product
                 key={v.id}
                 id={v.id}
                 title={v.title}
@@ -23,15 +21,17 @@ export const ProductsContainer = () => {
                 discountPercentage={v.discountPercentage}
                 image={v.images[0]}
                 stock={v.stock}
-            ></Product>
+            ></Eccomerce.Product>
         );
     });
     return (
         <>
             <Eccomerce>
-                <Search></Search>
+                <div>
+                    <Eccomerce.Search />
+                </div>
+                <div className="">{productsList}</div>
             </Eccomerce>
-            <div>{productsList}</div>
         </>
     );
 };

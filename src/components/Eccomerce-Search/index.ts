@@ -1,4 +1,4 @@
-import Eccomerce from "./Eccomerce";
+import Eccomerce from "./Ecommerce";
 import { Product } from "./Product";
 import { Search } from "./Search";
 
