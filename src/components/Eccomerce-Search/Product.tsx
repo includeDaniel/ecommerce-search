@@ -18,7 +18,7 @@ export const Product = ({
     image,
 }: ProductProps) => {
     return (
-        <div className="w-72 h-min bg-white p-5">
+        <div className="w-72 h-min bg-white p-5 h-96">
             <img
                 className="h-44 w-56 border-black"
                 src={image}
@@ -26,7 +26,12 @@ export const Product = ({
             />
             <span className="text-base">{title}</span>
             <hr />
-            <span className="text-xs text-gray-500">{description}</span>
+            <p
+                className="text-xs text-gray-500"
+                style={{ lineHeight: "normal" }}
+            >
+                {description}
+            </p>
             <div className="flex place-content-start pt-5 text-lg items-center">
                 <span className="text-slate-950 line-through pr-3">
                     {price}R$

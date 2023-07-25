@@ -12,25 +12,29 @@ export const EccomerceContainer = () => {
 
     const productsList = eccomerce.products?.map((v: any) => {
         return (
-            <Eccomerce.Product
-                key={v.id}
-                id={v.id}
-                title={v.title}
-                description={v.description}
-                price={v.price}
-                discountPercentage={v.discountPercentage}
-                image={v.images[0]}
-                stock={v.stock}
-            ></Eccomerce.Product>
+            <>
+                <Eccomerce.Product
+                    key={v.id}
+                    id={v.id}
+                    title={v.title}
+                    description={v.description}
+                    price={v.price}
+                    discountPercentage={v.discountPercentage}
+                    image={v.images[0]}
+                    stock={v.stock}
+                ></Eccomerce.Product>
+            </>
         );
     });
     return (
         <>
             <Eccomerce>
-                <div>
+                <div className="flex justify-center">
                     <Eccomerce.Search />
                 </div>
-                <div className="">{productsList}</div>
+                <div className="mt-20 bg-slate-300 grid grid-cols-4 gap-4">
+                    {productsList}
+                </div>
             </Eccomerce>
         </>
     );
