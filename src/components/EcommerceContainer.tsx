@@ -32,7 +32,7 @@ export const EccomerceContainer = () => {
                 <div className="flex justify-center">
                     <Eccomerce.Search />
                 </div>
-                <div className="mt-20 bg-slate-300 grid grid-cols-4 gap-4">
+                <div className="m-20 grid grid-cols-4 gap-4">
                     {productsList}
                 </div>
             </Eccomerce>

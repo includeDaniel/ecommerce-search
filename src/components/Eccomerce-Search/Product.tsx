@@ -18,12 +18,14 @@ export const Product = ({
     image,
 }: ProductProps) => {
     return (
-        <div className="w-72 h-min bg-white p-5 h-96">
-            <img
-                className="h-44 w-56 border-black"
-                src={image}
-                alt="product image"
-            />
+        <div className="w-72 h-min bg-white p-5 h-80 rounded">
+            <div className="flex items-center justify-center">
+                <img
+                    className="h-36 w-44 border-black"
+                    src={image}
+                    alt="product image"
+                />
+            </div>
             <span className="text-base">{title}</span>
             <hr />
             <p
