@@ -2,15 +2,15 @@ import { useEffect, useState } from "react";
 import Eccomerce from "./Eccomerce-Search";
 
 export const EccomerceContainer = () => {
-    const [eccomerce, setEccomerce]: any = useState([]);
+    const [products, setProducts]: any = useState([]);
 
     useEffect(() => {
         fetch("https://dummyjson.com/products")
             .then((res) => res.json())
-            .then(setEccomerce);
+            .then(setProducts);
     }, []);
 
-    const productsList = eccomerce.products?.map((v: any) => {
+    const productsList = products.products?.map((v: any) => {
         return (
             <>
                 <Eccomerce.Product
