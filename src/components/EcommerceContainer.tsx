@@ -29,9 +29,7 @@ export const EccomerceContainer = () => {
     return (
         <>
             <Eccomerce>
-                <div className="flex justify-center">
-                    <Eccomerce.Search />
-                </div>
+                <Eccomerce.Search />
                 <div className="m-20 grid grid-cols-4 gap-4">
                     {productsList}
                 </div>
