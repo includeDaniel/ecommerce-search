@@ -1,13 +1,11 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, KeyboardEvent } from "react";
 
-export const Search = () => {
+type SearchProps = {
+    setProducts: () => {};
+};
+
+export const Search = ({ setProducts }: SearchProps) => {
     const [input, setInput] = useState("");
-
-    useEffect(() => {
-        fetch(`https://dummyjson.com/products/search?q=${input}`)
-            .then((res) => res.json())
-            .then(console.log);
-    }, []);
 
     const handleChange = useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,9 +14,28 @@ export const Search = () => {
         []
     );
 
+    const handleKeyDown = useCallback(
+        (e: KeyboardEvent<HTMLInputElement>) => {
+            if (e.key === "Enter") {
+                fetch(`https://dummyjson.com/products/search?q=${input}`)
+                    .then((res) => res.json())
+                    .then(setProducts);
+                setInput("");
+            }
+        },
+        [input]
+    );
+
     return (
         <div className="flex justify-center">
-            <input type="text" className="w-80 h-8" onChange={handleChange} />
+            <input
+                type="text"
+                className="w-80 h-8"
+                placeholder="Search..."
+                value={input}
+                onChange={handleChange}
+                onKeyDown={handleKeyDown}
+            />
         </div>
     );
 };

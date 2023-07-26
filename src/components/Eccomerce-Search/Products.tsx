@@ -1,9 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ProductGrid from ".";
 
-export const Products = () => {
-    const [products, setProducts]: any = useState([]);
+type ProductsProps = {
+    products: {
+        products: [];
+    };
+    setProducts: () => {};
+};
 
+export const Products = ({ products, setProducts }: ProductsProps) => {
     useEffect(() => {
         fetch("https://dummyjson.com/products")
             .then((res) => res.json())
