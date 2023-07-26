@@ -1,8 +1,8 @@
-import Eccomerce from "./Ecommerce";
+import ProductGrid from "./ProductGrid";
 import { Product } from "./Product";
 import { Search } from "./Search";
 
-Eccomerce.Search = Search;
-Eccomerce.Product = Product;
+ProductGrid.Search = Search;
+ProductGrid.Product = Product;
 
-export default Eccomerce;
+export default ProductGrid;

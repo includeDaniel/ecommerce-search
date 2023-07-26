@@ -1,15 +1,15 @@
 import { Product } from "./Product";
 import { Search } from "./Search";
 
-type EccomerceType = (() => JSX.Element) & {
+type ProductGridType = (() => JSX.Element) & {
     children: JSX.Element;
     Search: typeof Search;
     Product: typeof Product;
 };
 
-type EccomerceProps = Pick<EccomerceType, "children">;
+type ProductGridProps = Pick<ProductGridType, "children">;
 
-const Eccomerce = (props: EccomerceProps) => {
+const ProductGrid = (props: ProductGridProps) => {
     return (
         <div data-testid="todo" className="w-full flex flex-col">
             {props.children}
@@ -17,4 +17,4 @@ const Eccomerce = (props: EccomerceProps) => {
     );
 };
 
-export default Eccomerce as unknown as EccomerceType;
+export default ProductGrid as unknown as ProductGridType;

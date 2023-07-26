@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import Eccomerce from "./Eccomerce-Search";
+import ProductGrid from ".";
 
-export const EccomerceContainer = () => {
+export const Products = () => {
     const [products, setProducts]: any = useState([]);
 
     useEffect(() => {
@@ -13,7 +13,7 @@ export const EccomerceContainer = () => {
     const productsList = products.products?.map((v: any) => {
         return (
             <>
-                <Eccomerce.Product
+                <ProductGrid.Product
                     key={v.id}
                     id={v.id}
                     title={v.title}
@@ -22,18 +22,9 @@ export const EccomerceContainer = () => {
                     discountPercentage={v.discountPercentage}
                     image={v.images[0]}
                     stock={v.stock}
-                ></Eccomerce.Product>
+                ></ProductGrid.Product>
             </>
         );
     });
-    return (
-        <>
-            <Eccomerce>
-                <Eccomerce.Search />
-                <div className="m-20 grid grid-cols-4 gap-4">
-                    {productsList}
-                </div>
-            </Eccomerce>
-        </>
-    );
+    return <div className="m-20 grid grid-cols-4 gap-4">{productsList}</div>;
 };
