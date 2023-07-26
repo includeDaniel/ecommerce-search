@@ -29,7 +29,7 @@ export const Product = ({
             <span className="text-base">{title}</span>
             <hr />
             <p
-                className="text-xs text-gray-500"
+                className="text-xs text-gray-500 h-14 max-h-14"
                 style={{ lineHeight: "normal" }}
             >
                 {description}
