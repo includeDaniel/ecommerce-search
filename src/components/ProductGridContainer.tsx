@@ -6,7 +6,7 @@ export const ProductGridContainer = () => {
         <>
             <ProductGrid>
                 <ProductGrid.Search />
-                <Products />
+                <ProductGrid.Products />
             </ProductGrid>
         </>
     );

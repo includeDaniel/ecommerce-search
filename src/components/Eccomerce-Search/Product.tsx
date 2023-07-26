@@ -18,7 +18,7 @@ export const Product = ({
     image,
 }: ProductProps) => {
     return (
-        <div className="w-72 h-min bg-white p-5 h-80 rounded">
+        <div className="w-72 bg-white p-5 h-80 rounded">
             <div className="flex items-center justify-center">
                 <img
                     className="h-36 w-44 border-black"
