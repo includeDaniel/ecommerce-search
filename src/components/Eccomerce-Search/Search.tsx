@@ -1,10 +1,10 @@
-import { useCallback, useEffect, useState, KeyboardEvent } from "react";
+import { useCallback, useState, KeyboardEvent, memo } from "react";
 
 type SearchProps = {
     setProducts: () => {};
 };
 
-export const Search = ({ setProducts }: SearchProps) => {
+export const Search = memo(({ setProducts }: SearchProps) => {
     const [input, setInput] = useState("");
 
     const handleChange = useCallback(
@@ -38,4 +38,4 @@ export const Search = ({ setProducts }: SearchProps) => {
             />
         </div>
     );
-};
+});
