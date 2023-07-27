@@ -7,7 +7,7 @@ type SearchProps = {
 
 export const Search = memo(({ setProducts }: SearchProps) => {
     const [input, setInput] = useState("");
-    const debouncedValue = useDebounce(input, 500);
+    const debouncedValue = useDebounce(input, 300);
 
     const handleChange = useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
