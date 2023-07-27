@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ProductGrid from "./Eccomerce-Search";
+import ProductGrid from "./Product-Search";
 
 export const ProductGridContainer = () => {
     const [products, setProducts]: any = useState([]);
