@@ -2,6 +2,8 @@
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/includeDaniel/ecommerce-search/blob/main/LICENSE)
 
+https://github.com/includeDaniel/ecommerce-search/assets/62966657/8b52a62a-a195-419f-9a0d-469522a44fbf
+
 Running locally: 
 
 -  Run `yarn` to install all dependencies
