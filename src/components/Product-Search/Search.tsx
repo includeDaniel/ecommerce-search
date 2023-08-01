@@ -2,7 +2,7 @@ import { useDebounce } from "@/hooks/useDebounce";
 import { useCallback, useState, KeyboardEvent, memo, useEffect } from "react";
 
 type SearchProps = {
-    setProducts: () => {};
+    setProducts: any;
 };
 
 export const Search = memo(({ setProducts }: SearchProps) => {
@@ -16,17 +16,23 @@ export const Search = memo(({ setProducts }: SearchProps) => {
         [input]
     );
 
+    const filterProducts = async () => {
+        const data = await fetch(
+            `https://dummyjson.com/products/search?q=${debouncedValue}`
+        );
+        const products = await data.json();
+        setProducts(products);
+    };
+
     useEffect(() => {
-        fetch(`https://dummyjson.com/products/search?q=${debouncedValue}`)
-            .then((res) => res.json())
-            .then(setProducts);
-    }, [debouncedValue]);
+        filterProducts();
+    }, [debouncedValue]);   
 
     return (
         <div className="flex justify-center">
             <input
                 type="text"
-                className="w-80 h-8"
+                className="w-80 h-8 py-2 px-4 rounded focus:outline-none focus:ring focus:border-blue-300"
                 placeholder="Search..."
                 value={input}
                 onChange={handleChange}
