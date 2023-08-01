@@ -1,18 +1,23 @@
 import { useEffect } from "react";
 import ProductGrid from ".";
+import { ProductGridContainer } from "../ProductGridContainer";
 
 type ProductsProps = {
     products: {
-        products: [];
+        products?: [];
     };
-    setProducts: () => {};
+    setProducts: (value: JSON) => void;
 };
 
 export const Products = ({ products, setProducts }: ProductsProps) => {
+    const getProducts = async () => {
+        const data = await fetch("https://dummyjson.com/products");
+        const allproducts = await data.json();
+        setProducts(allproducts);
+    };
+
     useEffect(() => {
-        fetch("https://dummyjson.com/products")
-            .then((res) => res.json())
-            .then(setProducts);
+        getProducts();
     }, []);
 
     const productsList = products.products?.map((v: any) => {

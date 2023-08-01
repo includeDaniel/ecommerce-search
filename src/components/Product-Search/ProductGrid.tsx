@@ -11,12 +11,12 @@ type ProductGridType = (() => JSX.Element) & {
 
 type ProductGridProps = Pick<ProductGridType, "children">;
 
-const ProductGrid = (props: ProductGridProps) => {
+const ProductGrid = ({ children }: ProductGridProps) => {
     return (
         <div data-testid="todo" className="w-full flex flex-col">
-            {props.children}
+            {children}
         </div>
     );
 };
 
-export default ProductGrid as unknown as ProductGridType;
+export default ProductGrid as ProductGridType;

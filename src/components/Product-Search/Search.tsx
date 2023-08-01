@@ -1,8 +1,9 @@
 import { useDebounce } from "@/hooks/useDebounce";
 import { useCallback, useState, KeyboardEvent, memo, useEffect } from "react";
+import { ProductGridContainer } from "../ProductGridContainer";
 
 type SearchProps = {
-    setProducts: any;
+    setProducts: (value: JSON) => {};
 };
 
 export const Search = memo(({ setProducts }: SearchProps) => {
@@ -26,7 +27,7 @@ export const Search = memo(({ setProducts }: SearchProps) => {
 
     useEffect(() => {
         filterProducts();
-    }, [debouncedValue]);   
+    }, [debouncedValue]);
 
     return (
         <div className="flex justify-center">
