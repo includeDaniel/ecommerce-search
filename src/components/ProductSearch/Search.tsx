@@ -7,10 +7,10 @@ import {
     Dispatch,
     SetStateAction,
 } from "react";
-import { FetchProductsType, ProductType } from "@/service/types";
+import { ProductsType } from "@/service/types";
 
 type SearchProps = {
-    setProducts: Dispatch<SetStateAction<FetchProductsType>>;
+    setProducts: Dispatch<SetStateAction<ProductsType>>;
 };
 
 export const Search = memo(({ setProducts }: SearchProps) => {

@@ -1,16 +1,16 @@
 import { Dispatch, SetStateAction, useEffect } from "react";
 import ProductGrid from ".";
-import { FetchProductsType, ProductType } from "@/service/types";
+import { ProductsType } from "@/service/types";
 
 type ProductsProps = {
-    products: FetchProductsType;
-    setProducts: Dispatch<SetStateAction<FetchProductsType>>;
+    products: ProductsType;
+    setProducts: Dispatch<SetStateAction<ProductsType>>;
 };
 
 export const Products = ({ products, setProducts }: ProductsProps) => {
     const getProducts = async () => {
         const response = await fetch("https://dummyjson.com/products");
-        const data = (await response.json()) as FetchProductsType;
+        const data = (await response.json()) as ProductsType;
         setProducts(data);
     };
 
@@ -27,7 +27,7 @@ export const Products = ({ products, setProducts }: ProductsProps) => {
                 description={v.description}
                 price={v.price}
                 discountPercentage={v.discountPercentage}
-                image={v.images[0]}
+                image={v.images}
                 stock={v.stock}
             ></ProductGrid.Product>
         );

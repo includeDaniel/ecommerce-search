@@ -30,6 +30,6 @@ export type ProductType = {
     imgaes: string[];
 };
 
-export type FetchProductsType = {
+export type ProductsType = {
     products: ProductType[];
 };
