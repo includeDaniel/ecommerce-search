@@ -1,11 +1,13 @@
+import { ProductType } from "@/service/types";
+
 type ProductProps = {
-    id: number;
-    title: string;
-    description: string;
-    price: number;
-    discountPercentage: number;
-    stock: number;
-    image: string;
+    id: ProductType["id"];
+    title: ProductType["title"];
+    description: ProductType["description"];
+    price: ProductType["price"];
+    discountPercentage: ProductType["discontPercentage"];
+    stock: ProductType["stock"];
+    image: ProductType["imgaes"];
 };
 
 export const Product = ({
@@ -22,7 +24,7 @@ export const Product = ({
             <div className="flex items-center justify-center">
                 <img
                     className="h-36 w-44 border-black"
-                    src={image}
+                    src={image[0]}
                     alt="product image"
                 />
             </div>
