@@ -6,17 +6,16 @@ import { useFetch } from "@/hooks/useFetch";
 type ProductsProps = {
     products: ProductsType;
     setProducts: Dispatch<SetStateAction<ProductsType>>;
+    url: string;
 };
 
-const url = "https://dummyjson.com/products";
-
-export const Products = ({ products, setProducts }: ProductsProps) => {
+export const Products = ({ products, setProducts, url }: ProductsProps) => {
     const { data, error } = useFetch<ProductsType>(url);
 
     const getProducts = async () => {
         try {
             setProducts(data);
-        } catch (error) {
+        } catch {
             console.log(error);
         }
     };
@@ -25,7 +24,7 @@ export const Products = ({ products, setProducts }: ProductsProps) => {
         getProducts();
     }, []);
 
-    const productsList = products.products.map((v: ProductType) => {
+    const productsList = products?.products.map((v: ProductType) => {
         return (
             <ProductGrid.Product
                 key={v.id}

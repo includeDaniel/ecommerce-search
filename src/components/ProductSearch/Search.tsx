@@ -11,9 +11,10 @@ import { ProductsType } from "@/service/types";
 
 type SearchProps = {
     setProducts: Dispatch<SetStateAction<ProductsType>>;
+    url: string;
 };
 
-export const Search = memo(({ setProducts }: SearchProps) => {
+export const Search = memo(({ setProducts, url }: SearchProps) => {
     const [input, setInput] = useState("");
     const debouncedValue = useDebounce(input, 300);
 
@@ -25,9 +26,7 @@ export const Search = memo(({ setProducts }: SearchProps) => {
     );
 
     const filterProducts = async () => {
-        const data = await fetch(
-            `https://dummyjson.com/products/search?q=${debouncedValue}`
-        );
+        const data = await fetch(`${url}/search?q=${debouncedValue}`);
         const products = await data.json();
         setProducts(products);
     };
