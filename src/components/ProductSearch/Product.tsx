@@ -5,9 +5,9 @@ type ProductProps = {
     title: ProductType["title"];
     description: ProductType["description"];
     price: ProductType["price"];
-    discountPercentage: ProductType["discontPercentage"];
+    discountPercentage: ProductType["discountPercentage"];
     stock: ProductType["stock"];
-    image: ProductType["imgaes"];
+    image: ProductType["images"];
 };
 
 export const Product = ({

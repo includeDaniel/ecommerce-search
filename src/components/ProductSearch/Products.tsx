@@ -1,24 +1,31 @@
 import { Dispatch, SetStateAction, useEffect } from "react";
 import ProductGrid from ".";
-import { ProductsType } from "@/service/types";
+import { ProductType, ProductsType } from "@/service/types";
+import { useFetch } from "@/hooks/useFetch";
 
 type ProductsProps = {
     products: ProductsType;
     setProducts: Dispatch<SetStateAction<ProductsType>>;
 };
 
+const url = "https://dummyjson.com/products";
+
 export const Products = ({ products, setProducts }: ProductsProps) => {
+    const { data, error } = useFetch<ProductsType>(url);
+
     const getProducts = async () => {
-        const response = await fetch("https://dummyjson.com/products");
-        const data = (await response.json()) as ProductsType;
-        setProducts(data);
+        try {
+            setProducts(data);
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     useEffect(() => {
         getProducts();
     }, []);
 
-    const productsList = products.products?.map((v: any) => {
+    const productsList = products.products.map((v: ProductType) => {
         return (
             <ProductGrid.Product
                 key={v.id}

@@ -16,18 +16,20 @@
 // ]
 // }
 
+import { Dispatch, SetStateAction } from "react";
+
 export type ProductType = {
     id: number;
     title: string;
     description: string;
     price: number;
-    discontPercentage: number;
+    discountPercentage: number;
     rating: number;
     stock: number;
     brand: string;
     category: string;
     thumbnail: string;
-    imgaes: string[];
+    images: string[];
 };
 
 export type ProductsType = {

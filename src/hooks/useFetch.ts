@@ -1,7 +1,8 @@
+import { ProductsType } from "@/service/types";
 import { useEffect, useReducer, useRef } from "react";
 
 interface State<T> {
-    data?: T;
+    data?: any;
     error?: Error;
 }
 
@@ -13,10 +14,7 @@ type Action<T> =
     | { type: "fetched"; payload: T }
     | { type: "error"; payload: Error };
 
-export function useFetch<T = unknown>(
-    url?: string,
-    options?: RequestInit
-): State<T> {
+export function useFetch<T>(url: string, options?: RequestInit): State<T> {
     const cache = useRef<Cache<T>>({});
 
     // Used to prevent state update if the component is unmounted
