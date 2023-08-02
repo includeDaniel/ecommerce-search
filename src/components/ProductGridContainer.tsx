@@ -1,15 +1,11 @@
 import { useState } from "react";
-import ProductGrid from "./Product-Search";
-
-export type ProductGridContainer = {
-    products: {
-        products: [];
-    };
-    setProducts: () => {};
-};
+import ProductGrid from "./ProductSearch";
+import { FetchProductsType, ProductType } from "@/service/types";
 
 export const ProductGridContainer = () => {
-    const [products, setProducts]: any = useState([]);
+    const [products, setProducts] = useState<FetchProductsType>({
+        products: [],
+    });
     return (
         <>
             <ProductGrid>

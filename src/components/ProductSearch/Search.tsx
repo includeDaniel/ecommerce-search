@@ -1,9 +1,16 @@
 import { useDebounce } from "@/hooks/useDebounce";
-import { useCallback, useState, KeyboardEvent, memo, useEffect } from "react";
-import { ProductGridContainer } from "../ProductGridContainer";
+import {
+    useCallback,
+    useState,
+    memo,
+    useEffect,
+    Dispatch,
+    SetStateAction,
+} from "react";
+import { FetchProductsType, ProductType } from "@/service/types";
 
 type SearchProps = {
-    setProducts: (value: JSON) => {};
+    setProducts: Dispatch<SetStateAction<FetchProductsType>>;
 };
 
 export const Search = memo(({ setProducts }: SearchProps) => {
