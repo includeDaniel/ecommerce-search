@@ -40,7 +40,7 @@ export const Search = memo(({ setProducts }: SearchProps) => {
         <div className="flex justify-center">
             <input
                 type="text"
-                className="w-80 h-8 py-2 px-4 rounded focus:outline-none focus:ring focus:border-blue-300"
+                className="tablet:w-96 cellphone:w-72 h-8 py-2 px-4 rounded focus:outline-none focus:ring focus:border-blue-300"
                 placeholder="Search..."
                 value={input}
                 onChange={handleChange}

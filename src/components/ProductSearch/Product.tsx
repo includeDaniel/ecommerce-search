@@ -5,9 +5,9 @@ type ProductProps = {
     title: ProductType["title"];
     description: ProductType["description"];
     price: ProductType["price"];
-    discountPercentage: ProductType["discontPercentage"];
+    discountPercentage: ProductType["discountPercentage"];
     stock: ProductType["stock"];
-    image: ProductType["imgaes"];
+    image: ProductType["images"];
 };
 
 export const Product = ({
@@ -20,7 +20,7 @@ export const Product = ({
     image,
 }: ProductProps) => {
     return (
-        <div className="w-72 bg-white p-5 h-80 rounded">
+        <div className="w-72 tablet:h-80 bg-white p-5  rounded">
             <div className="flex items-center justify-center">
                 <img
                     className="h-36 w-44 border-black"
