@@ -9,14 +9,12 @@ module.exports = {
         screens: {
             cellphone: "320px",
             // => @media (min-width: 320px) { ... }
-            largecellphone: "560px",
-            // => @media (min-width: 560px) { ... }
-            tablet: "620px",
-            // => @media (min-width: 760px) { ... }
-
+            largecellphone: "650px",
+            // => @media (min-width: 650px) { ... }
+            tablet: "930px",
+            // => @media (min-width: 930px) { ... }
             laptop: "1020px",
             // => @media (min-width: 1020px) { ... }
-
             desktop: "1280px",
             // => @media (min-width: 1280px) { ... }
         },
@@ -27,12 +25,17 @@ module.exports = {
                     "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
             },
             lineHeight: {
-                "extra-loose": "0.7rem",
+                "extra-loose": "0.8rem",
             },
             fontSize: {
-                xxs: "0.6rem",
+                xxx: "0.5rem",
+                xxy: "0.6rem",
+                xxs: "0.7rem",
             },
         },
     },
-    plugins: [],
+    plugins: [
+        // ...
+        require("@tailwindcss/line-clamp"),
+    ],
 };
