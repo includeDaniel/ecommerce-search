@@ -33,7 +33,7 @@ export const Products = ({ products, setProducts }: ProductsProps) => {
         );
     });
     return (
-        <div className="tablet:ml-10 justify-center mt-10 grid tablet:grid-cols-4 gap-4">
+        <div className="w-11/12 desktop:ml-14 desktop:grid-cols-5 desktop:gap-4 laptop:ml-10 laptop:grid-cols-4 tablet:ml-8 tablet:grid-cols-3 laptop:gap-3 cellphone:ml-3  cellphone:grid-cols-2 cellphone:gap-2 justify-center mt-10 grid">
             {productsList}
         </div>
     );
