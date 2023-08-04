@@ -14,21 +14,13 @@ export const Products = ({ products, setProducts }: ProductsProps) => {
         `${base_url}${products_url}`
     );
 
-    const getProducts = async () => {
-        try {
-            setProducts(data);
-        } catch {
-            console.log(error);
-        }
-    };
-
     useEffect(() => {
-        getProducts();
-    }, []);
+        setProducts(data);
+    }, [data]);
 
     if (error) return <p>There is an error.</p>;
-    if (!data) return <p>Loading...</p>;
-    const productsList = data.products.map((v: ProductType) => {
+    if (!products) return <p>Loading...</p>;
+    const productsList = products?.products.map((v: ProductType) => {
         return (
             <ProductGrid.Product
                 key={v.id}
