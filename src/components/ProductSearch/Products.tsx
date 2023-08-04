@@ -40,5 +40,9 @@ export const Products = ({ products, setProducts }: ProductsProps) => {
             ></ProductGrid.Product>
         );
     });
-    return <div className="m-20 grid grid-cols-4 gap-4">{productsList}</div>;
+    return (
+        <div className="w-11/12 desktop:ml-14 desktop:grid-cols-5 desktop:gap-4 laptop:ml-10 laptop:grid-cols-4 laptop:gap-3 largecellphone:ml-8 largecellphone:grid-cols-3 cellphone:ml-4  cellphone:grid-cols-2 cellphone:gap-2 justify-center mt-10 grid">
+            {productsList}
+        </div>
+    );
 };
