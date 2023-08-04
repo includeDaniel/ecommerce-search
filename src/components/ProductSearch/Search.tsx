@@ -8,13 +8,13 @@ import {
     SetStateAction,
 } from "react";
 import { ProductsType } from "@/service/types";
+import { base_url, search } from "@/service/constants";
 
 type SearchProps = {
     setProducts: Dispatch<SetStateAction<ProductsType>>;
-    url: string;
 };
 
-export const Search = memo(({ setProducts, url }: SearchProps) => {
+export const Search = memo(({ setProducts }: SearchProps) => {
     const [input, setInput] = useState("");
     const debouncedValue = useDebounce(input, 300);
 
@@ -26,7 +26,7 @@ export const Search = memo(({ setProducts, url }: SearchProps) => {
     );
 
     const filterProducts = async () => {
-        const data = await fetch(`${url}/search?q=${debouncedValue}`);
+        const data = await fetch(`${base_url}${search}${debouncedValue}`);
         const products = await data.json();
         setProducts(products);
     };

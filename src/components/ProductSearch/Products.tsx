@@ -2,15 +2,17 @@ import { Dispatch, SetStateAction, useEffect } from "react";
 import ProductGrid from ".";
 import { ProductType, ProductsType } from "@/service/types";
 import { useFetch } from "@/hooks/useFetch";
+import { base_url, products as products_url } from "@/service/constants";
 
 type ProductsProps = {
     products: ProductsType;
     setProducts: Dispatch<SetStateAction<ProductsType>>;
-    url: string;
 };
 
-export const Products = ({ products, setProducts, url }: ProductsProps) => {
-    const { data, error } = useFetch<ProductsType>(url);
+export const Products = ({ products, setProducts }: ProductsProps) => {
+    const { data, error } = useFetch<ProductsType>(
+        `${base_url}${products_url}`
+    );
 
     const getProducts = async () => {
         try {

@@ -2,8 +2,6 @@ import { useState } from "react";
 import ProductGrid from "./ProductSearch";
 import { ProductsType } from "@/service/types";
 
-const url = "https://dummyjson.com/products";
-
 export const ProductGridContainer = () => {
     const [products, setProducts] = useState<ProductsType>({
         products: [],
@@ -11,9 +9,8 @@ export const ProductGridContainer = () => {
     return (
         <>
             <ProductGrid>
-                <ProductGrid.Search setProducts={setProducts} url={url} />
+                <ProductGrid.Search setProducts={setProducts} />
                 <ProductGrid.Products
-                    url={url}
                     products={products}
                     setProducts={setProducts}
                 />
