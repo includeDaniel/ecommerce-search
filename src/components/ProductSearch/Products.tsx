@@ -26,7 +26,9 @@ export const Products = ({ products, setProducts }: ProductsProps) => {
         getProducts();
     }, []);
 
-    const productsList = products?.products.map((v: ProductType) => {
+    if (error) return <p>There is an error.</p>;
+    if (!data) return <p>Loading...</p>;
+    const productsList = data.products.map((v: ProductType) => {
         return (
             <ProductGrid.Product
                 key={v.id}

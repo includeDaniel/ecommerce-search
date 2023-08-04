@@ -9,6 +9,7 @@ import {
 } from "react";
 import { ProductsType } from "@/service/types";
 import { base_url, search } from "@/service/constants";
+import { useFetch } from "@/hooks/useFetch";
 
 type SearchProps = {
     setProducts: Dispatch<SetStateAction<ProductsType>>;
@@ -17,6 +18,7 @@ type SearchProps = {
 export const Search = memo(({ setProducts }: SearchProps) => {
     const [input, setInput] = useState("");
     const debouncedValue = useDebounce(input, 300);
+    const { data, error } = useFetch(`${base_url}${search}${debouncedValue}`);
 
     const handleChange = useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,15 +28,12 @@ export const Search = memo(({ setProducts }: SearchProps) => {
     );
 
     const filterProducts = async () => {
-        const data = await fetch(`${base_url}${search}${debouncedValue}`);
-        const products = await data.json();
-        setProducts(products);
+        setProducts(data);
     };
 
     useEffect(() => {
         filterProducts();
     }, [debouncedValue]);
-
     return (
         <div className="flex justify-center">
             <input
