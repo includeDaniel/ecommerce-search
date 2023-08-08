@@ -1,20 +1,20 @@
+"use client";
+
 import { useDebounce } from "@/hooks/useDebounce";
 import {
     useCallback,
     useState,
     memo,
     useEffect,
-    Dispatch,
     SetStateAction,
+    Dispatch,
 } from "react";
-import { ProductsType } from "@/service/types";
-import { base_url, products, search } from "@/service/constants";
-import { useFetch } from "@/hooks/useFetch";
 
 type SearchProps = {
-    setProducts: Dispatch<SetStateAction<ProductsType>>;
+    setParams: Dispatch<SetStateAction<string>>;
 };
-const Search = ({ setProducts }: SearchProps) => {
+
+const Search = ({ setParams }: SearchProps) => {
     const [input, setInput] = useState("");
     const debouncedValue = useDebounce(input, 300);
 
@@ -25,20 +25,9 @@ const Search = ({ setProducts }: SearchProps) => {
         [input]
     );
 
-    const filterProducts = async () => {
-        const response = await fetch(
-            `${base_url}${products}${search}${debouncedValue}`
-        );
-        const data = await response.json();
-        setProducts(data);
-    };
-
-    /* jshint ignore:start*/
-
     useEffect(() => {
-        filterProducts();
+        setParams(debouncedValue);
     }, [debouncedValue]);
-    /* jshint ignore:end*/
 
     return (
         <div className="flex justify-center">
