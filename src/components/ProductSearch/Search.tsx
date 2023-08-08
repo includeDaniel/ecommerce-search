@@ -14,8 +14,7 @@ import { useFetch } from "@/hooks/useFetch";
 type SearchProps = {
     setProducts: Dispatch<SetStateAction<ProductsType>>;
 };
-
-export const Search = memo(({ setProducts }: SearchProps) => {
+const Search = ({ setProducts }: SearchProps) => {
     const [input, setInput] = useState("");
     const debouncedValue = useDebounce(input, 300);
 
@@ -34,9 +33,12 @@ export const Search = memo(({ setProducts }: SearchProps) => {
         setProducts(data);
     };
 
+    /* jshint ignore:start*/
+
     useEffect(() => {
         filterProducts();
     }, [debouncedValue]);
+    /* jshint ignore:end*/
 
     return (
         <div className="flex justify-center">
@@ -49,4 +51,6 @@ export const Search = memo(({ setProducts }: SearchProps) => {
             />
         </div>
     );
-});
+};
+
+export default memo(Search);

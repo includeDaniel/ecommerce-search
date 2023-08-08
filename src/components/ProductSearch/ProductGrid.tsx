@@ -1,6 +1,6 @@
 import { Product } from "./Product";
 import { Products } from "./Products";
-import { Search } from "./Search";
+import Search from "./Search";
 
 type ProductGridType = (({ children }: ProductGridProps) => JSX.Element) & {
     children: JSX.Element | JSX.Element[];
