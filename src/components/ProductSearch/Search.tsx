@@ -16,7 +16,7 @@ type SearchProps = {
 
 const Search = ({ setParams }: SearchProps) => {
     const [input, setInput] = useState("");
-    const debouncedValue = useDebounce(input, 300);
+    const debouncedValue = useDebounce(input);
 
     const handleChange = useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +26,9 @@ const Search = ({ setParams }: SearchProps) => {
     );
 
     useEffect(() => {
-        setParams(debouncedValue);
+        if (debouncedValue.length >= 3 || debouncedValue === "") {
+            setParams(debouncedValue);
+        }
     }, [debouncedValue]);
 
     return (

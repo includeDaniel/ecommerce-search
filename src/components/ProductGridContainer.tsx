@@ -11,18 +11,15 @@ import {
 } from "@/service/constants";
 
 export const ProductGridContainer = () => {
-    const [products, setProducts] = useState<ProductsType>({
-        products: [],
-    });
     const [params, setParams] = useState("");
-    const { data, error } = useFetch<ProductsType>(
+    const { data: products, error } = useFetch<ProductsType>(
         `${base_url}${products_url}${search}${params}`
     );
 
     return (
         <ProductGrid>
             <ProductGrid.Search setParams={setParams} />
-            <ProductGrid.Products products={data} />
+            <ProductGrid.Products products={products} />
         </ProductGrid>
     );
 };
