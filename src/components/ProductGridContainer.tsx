@@ -19,7 +19,7 @@ export const ProductGridContainer = () => {
     return (
         <ProductGrid>
             <ProductGrid.Search setParams={setParams} />
-            <ProductGrid.Products products={products} />
+            <ProductGrid.Products products={products} error={error} />
         </ProductGrid>
     );
 };
