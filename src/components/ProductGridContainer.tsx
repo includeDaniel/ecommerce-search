@@ -15,11 +15,11 @@ export const ProductGridContainer = () => {
     const { data: products, error } = useFetch<ProductsType>(
         `${base_url}${products_url}${search}${params}`
     );
-
+    if (error) return <p>There is an error.</p>;
     return (
         <ProductGrid>
             <ProductGrid.Search setParams={setParams} />
-            <ProductGrid.Products products={products} error={error} />
+            <ProductGrid.Products products={products} />
         </ProductGrid>
     );
 };

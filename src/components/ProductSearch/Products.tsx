@@ -3,10 +3,9 @@ import { ProductType, ProductsType } from "@/service/types";
 
 type ProductsProps = {
     products: ProductsType;
-    error: Error | undefined;
 };
 
-export const Products = ({ products, error }: ProductsProps) => {
+export const Products = ({ products }: ProductsProps) => {
     const productsList = products?.products.map((v: ProductType) => (
         <ProductGrid.Product
             key={v.id}
@@ -21,7 +20,7 @@ export const Products = ({ products, error }: ProductsProps) => {
     ));
     return (
         <div className="w-11/12 desktop:ml-14 desktop:grid-cols-5 desktop:gap-4 laptop:ml-10 laptop:grid-cols-4 laptop:gap-3 largecellphone:ml-8 largecellphone:grid-cols-3 cellphone:ml-4  cellphone:grid-cols-2 cellphone:gap-2 justify-center mt-10 grid">
-            {error ? <div>An error has occurred</div> : productsList}
+            {productsList}
         </div>
     );
 };
