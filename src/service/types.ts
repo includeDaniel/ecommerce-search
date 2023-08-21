@@ -16,6 +16,8 @@
 // ]
 // }
 
+import { Dispatch, SetStateAction } from "react";
+
 export type ProductType = {
     id: number;
     title: string;

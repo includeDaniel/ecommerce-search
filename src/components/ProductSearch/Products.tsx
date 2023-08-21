@@ -1,37 +1,27 @@
-import { Dispatch, SetStateAction, useEffect } from "react";
 import ProductGrid from ".";
-import { ProductsType } from "@/service/types";
+import { ProductType, ProductsType } from "@/service/types";
 
 type ProductsProps = {
     products: ProductsType;
-    setProducts: Dispatch<SetStateAction<ProductsType>>;
+    error: Error | undefined;
 };
 
-export const Products = ({ products, setProducts }: ProductsProps) => {
-    const getProducts = async () => {
-        const response = await fetch("https://dummyjson.com/products");
-        const data = (await response.json()) as ProductsType;
-        setProducts(data);
-    };
+export const Products = ({ products, error }: ProductsProps) => {
+    const productsList = products?.products.map((v: ProductType) => (
+        <ProductGrid.Product
+            key={v.id}
+            id={v.id}
+            title={v.title}
+            description={v.description}
+            price={v.price}
+            discountPercentage={v.discountPercentage}
+            image={v.images}
+            stock={v.stock}
+        />
+    ));
 
-    useEffect(() => {
-        getProducts();
-    }, []);
-
-    const productsList = products.products?.map((v: any) => {
-        return (
-            <ProductGrid.Product
-                key={v.id}
-                id={v.id}
-                title={v.title}
-                description={v.description}
-                price={v.price}
-                discountPercentage={v.discountPercentage}
-                image={v.images}
-                stock={v.stock}
-            ></ProductGrid.Product>
-        );
-    });
+    if (error) return <p>Could not load the products</p>;
+    if (!products) return <p>Loading...</p>;
     return (
         <div className="w-11/12 desktop:ml-14 desktop:grid-cols-5 desktop:gap-4 laptop:ml-10 laptop:grid-cols-4 laptop:gap-3 largecellphone:ml-8 largecellphone:grid-cols-3 cellphone:ml-4  cellphone:grid-cols-2 cellphone:gap-2 justify-center mt-10 grid">
             {productsList}
